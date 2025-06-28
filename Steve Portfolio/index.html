@@ -1,0 +1,465 @@
+<!--Developer & Owner: Steve Sequeira-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Steve Sequeira | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #2563eb;
+      --bg-color: #f0f4f8;
+      --text-color: #1f2937;
+      --section-color-1: #e0f2fe;
+      --section-color-2: #fef3c7;
+      --section-color-3: #fce7f3;
+      --section-color-4: #d1fae5;
+      --section-color-5: #ede9fe;
+      --section-color-6: #fff7ed;
+      --section-color-7: #f3e8ff;
+      --section-color-8: #e2e8f0;
+      --nav-bg: #1f2937;
+      --nav-hover: #4f46e5;
+      --nav-text: #ffffff;
+      --border-color: #e5e7eb;
+      --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+      transition: all 0.3s ease;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+    }
+
+    header {
+      text-align: center;
+      padding: 1rem;
+      padding-top: 0.5rem;
+      background: #c2c8ffdb;
+      box-shadow: var(--shadow);
+      border-bottom: 0px solid var(--border-color);
+    }
+
+    .download-btn {
+      display: inline-block;
+      background-color: var(--primary-color);
+      color: #fff;
+      padding: 0.7rem 1.5rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 1rem;
+    }
+
+    .download-btn:hover {
+      background-color: var(--nav-hover);
+    }
+
+    /* Desktop Navigation */
+    .desktop-nav {
+      position: sticky;
+      top: 0;
+      background: var(--nav-bg);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      padding: 0.2rem;
+      z-index: 700;
+      background-color: #c2c8ffdb;
+    }
+
+    .desktop-nav a {
+      text-decoration: none;
+      color: var(--nav-text);
+      background: black;
+      padding: 0.5rem 1rem;
+      border-radius: 100px;
+      font-weight: 600;
+    }
+
+    .desktop-nav a:hover {
+      background: var(--nav-hover);
+    }
+
+    /* Mobile Navigation */
+    .mobile-menu-btn {
+      display: none;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+    }
+
+    .mobile-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transform: translateY(-100%);
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+
+    .mobile-nav.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .mobile-nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+      margin: 1rem 0;
+      padding: 0.2rem 1rem;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+    }
+
+    .mobile-nav a:hover {
+      background: var(--primary-color);
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      color: white;
+      font-size: 1rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 2rem 1rem;
+    }
+
+    section {
+      padding: 2rem;
+      border-radius: 1rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow);
+    }
+
+    #about { background: var(--section-color-1); }
+    #experience { background: var(--section-color-2); }
+    #education { background: var(--section-color-3); }
+    #projects { background: var(--section-color-4); }
+    #achievements { background: var(--section-color-5); }
+    #hackathons { background: var(--section-color-6); }
+    #certifications { background: var(--section-color-6); }
+    #skills { background: var(--section-color-7); }
+    #languages, #interests { background: var(--section-color-3); }
+    #contact { background: var(--section-color-8); }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--primary-color);
+    }
+
+    .card {
+      background: white;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      margin: 1rem 0;
+      box-shadow: var(--shadow);
+    }
+
+    .cert-list li {
+      margin-bottom: 1rem;
+    }
+
+    .cert-list a {
+      color: #2563eb;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+    .cert-list a:hover {
+      color: var(--nav-hover);
+    }
+
+    .social-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      color: white;
+      font-size: 1.5rem;
+      text-decoration: none;
+      transition: transform 0.3s ease;
+    }
+
+    .social-btn:hover {
+      transform: translateY(-5px);
+    }
+
+    .linkedin { background-color: #0A66C2; }
+    .github { background-color: #333; }
+
+    footer {
+      background-color: #fff;
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #555;
+      border-top: 1px solid var(--border-color);
+    }
+
+    @media (max-width: 768px) {
+      .desktop-nav {
+        display: none;
+      }
+
+      .mobile-menu-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Steve Sequeira</h1>
+    <p>Final Year Engineering Student | Electronics & CS | Blockchain Honors</p>
+    <a class="download-btn" href="Steve Sequeira_RESUME.pdf" download>📄 Download Resume</a>
+  </header>
+
+  <!-- Desktop Navigation -->
+  <nav class="desktop-nav">
+    <a href="#about">About Me</a>
+    <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
+    <a href="#projects">Projects</a>
+    <a href="#achievements">Achievements</a>
+    <a href="#hackathons">Hackathons</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#skills">Skills</a>
+    <a href="#languages">Languages</a>
+    <a href="#interests">Interests</a>
+    <a href="#contact">Contact Me</a>
+  </nav>
+
+  <!-- Mobile Menu Button -->
+  <button class="mobile-menu-btn" id="mobileMenuBtn">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <!-- Mobile Navigation -->
+  <div class="mobile-nav" id="mobileNav">
+    <button class="close-btn" id="closeBtn">
+      <i class="fas fa-times"></i>
+    </button>
+    <a href="#about" onclick="closeMobileMenu()">About Me</a>
+    <a href="#experience" onclick="closeMobileMenu()">Experience</a>
+    <a href="#education" onclick="closeMobileMenu()">Education</a>
+    <a href="#projects" onclick="closeMobileMenu()">Projects</a>
+    <a href="#achievements" onclick="closeMobileMenu()">Achievements</a>
+    <a href="#hackathons" onclick="closeMobileMenu()">Hackathons</a>
+    <a href="#certifications" onclick="closeMobileMenu()">Certifications</a>
+    <a href="#skills" onclick="closeMobileMenu()">Skills</a>
+    <a href="#languages" onclick="closeMobileMenu()">Languages</a>
+    <a href="#interests" onclick="closeMobileMenu()">Interests</a>
+    <a href="#contact" onclick="closeMobileMenu()">Contact Me</a>
+  </div>
+
+  <div class="container">
+    <!-- All your sections remain the same as before -->
+    <section id="about">
+      <h2 class="section-title">About Me</h2>
+      <p>I am Steve Sequeira, a passionate engineering student specializing in Electronics and Computer Science with Honors in Blockchain. I have developed innovative solutions for both hardware and software projects. I strongly believe in teamwork, continuous learning, and using technology to solve real-world problems. With my experience in hackathons and internships, I strive to deliver results that matter.</p>
+    </section>
+
+    <section id="experience">
+      <h2 class="section-title">Experience</h2>
+      <div class="card">
+        <h3>Umeed NGO Foundation – Intern (2022)</h3>
+        <ul>
+          <li>Promoted the NGO on YouTube and Instagram to increase awareness.</li>
+          <li>Conducted surveys with local vendors to assess government support.</li>
+          <li>Raised ₹2000 in donations through local community engagement.</li>
+          <li>Assisted with financial initiatives for better fund distribution.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="education">
+      <h2 class="section-title">Education</h2>
+      <ul>
+        <li><strong>B.E. Electronics and CS</strong> – Fr. CRCE (2021–2025) – CGPA: 7.49</li>
+        <li><strong>12th HSC – IT Bifocal</strong> – St. Andrew's College (2019–2021) – 83.67%</li>
+        <li><strong>10th SSC</strong> – St. Stanislaus High School (2013–2019) – 73.20%</li>
+      </ul>
+    </section>
+
+    <section id="projects">
+      <h2 class="section-title">Projects</h2>
+      <div class="card">
+        <h3>Smart Mailbox System</h3>
+        <p>Secured mailbox using fingerprint module and Arduino Uno. <a href="https://github.com/Steveseq/Smart-Locker" target="_blank">GitHub</a></p>
+      </div>
+      <div class="card">
+        <h3>Academic Calendar System</h3>
+        <p>Built using HTML, CSS, JS, Node.js, MySQL for college-wide use. <a href="https://github.com/Steveseq/Academic-calendar-system-by-Steve" target="_blank">GitHub</a></p>
+      </div>
+      <div class="card">
+        <h3>Indian Sign Language Translator</h3>
+        <p>AI/ML powered real-time sign-to-text conversion app. <a href="https://indian-sign-translator.netlify.app/" target="_blank">Live Demo</a></p>
+      </div>
+      <div class="card">
+        <h3>Text Summarization with NLP</h3>
+        <p>GUI-based NLP text summarizer using spaCy and heapq. <a href="https://github.com/Steveseq/Text-Summarization-using-NLP-by-Steve" target="_blank">GitHub</a></p>
+      </div>
+      <div class="card">
+        <h3>Theft Detection System</h3>
+        <p>IoT-based IR and PIR sensor security system. <a href="https://github.com/Steveseq/Interfacing-PIR-sensor-using-IR-sensor-for-theft-detection" target="_blank">GitHub</a></p>
+      </div>
+    </section>
+
+    <section id="achievements">
+      <h2 class="section-title">Achievements</h2>
+      <ul>
+        <li>NSS Volunteer – Fr. CRCE (2022–2024)</li>
+        <li>Runner-up – U-17 District Hockey Tournament</li>
+        <li>Completed 100+ coding challenges on HackerRank</li>
+      </ul>
+    </section>
+
+    <section id="hackathons">
+      <h2 class="section-title">Hackathons</h2>
+      <ul>
+        <li>SIH 2023: Built AI-powered media feedback system (Round 2)</li>
+        <li>SIH 2024: Developed Indian Sign Language Translator (Round 2)</li>
+      </ul>
+    </section>
+
+    <section id="certifications">
+      <h2 class="section-title">Certifications</h2>
+      <ul class="cert-list">
+        <li><strong>TCS iON – Career Edge:</strong> Time, Communication, AI, Financial Literacy</li>
+        <li><strong>Elements of AI – University of Helsinki:</strong> <a href="https://certificates.mooc.fi/validate/rzpohd3olb" target="_blank">View Certificate</a></li>
+        <li><strong>J.P. Morgan Virtual Internship:</strong> <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/J.P.%20Morgan/R5iK7HMxJGBgaSbvk_J.P.%20Morgan_RbLxQ4ZzwoveF2428_1704722262871_completion_certificate.pdf" target="_blank">View Certificate</a></li>
+        <li><strong>Accenture Data Analytics Simulation:</strong> <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/Accenture%20North%20America/hzmoNKtzvAzXsEqx8_Accenture%20North%20America_RbLxQ4ZzwoveF2428_1710165681253_completion_certificate.pdf" target="_blank">View Certificate</a></li>
+        <li><strong>AWS Cloud Essentials – Coursera:</strong> <a href="https://coursera.org/share/070cfa3a756ad303828f78a3e972e651" target="_blank">View Certificate</a></li>
+      </ul>
+    </section>
+
+    <section id="skills">
+      <h2 class="section-title">Skills</h2>
+      <ul>
+        <li><strong>Languages:</strong> Python, SQL, JavaScript, Node.js, HTML, CSS</li>
+        <li><strong>Tools:</strong> AWS, Excel, Jupyter, Tinkercad, Proteus</li>
+        <li><strong>Libraries:</strong> NumPy, Pandas, spaCy, tkinter</li>
+        <li><strong>ML Models:</strong> KNN, K-Means, PCA, Regression, Decision Trees</li>
+        <li><strong>Embedded:</strong> Arduino IDE, IR Sensor, PIR, Fingerprint Module</li>
+        <li><strong>Soft Skills:</strong> Leadership, Observation, Multitasking, Decision Making</li>
+      </ul>
+    </section>
+
+    <section id="languages">
+      <h2 class="section-title">Languages</h2>
+      <ul>
+        <li>English – Fluent</li>
+        <li>Hindi – Intermediate</li>
+        <li>Marathi – Basic to Intermediate</li>
+      </ul>
+    </section>
+
+    <section id="interests">
+      <h2 class="section-title">Interests</h2>
+      <ul>
+        <li>AI & Machine Learning</li>
+        <li>Data Science & Analytics</li>
+        <li>Web Development</li>
+        <li>Football, Hockey, Running</li>
+        <li>Reading & Blogging</li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h2 class="section-title">Contact Me</h2>
+      <p>Email: <a href="mailto:stevesequeira29@gmail.com">stevesequeira29@gmail.com</a></p>
+      <p>Phone Number: +91-7738692261</p>
+      <p>Location: Mumbai, India</p>
+      <p>Blog: <a href="https://sites.google.com/view/mindful-planet-mindful-me/blog" target="_blank">Mindful Planet & Me</a></p>
+
+      <div class="social-buttons">
+        <a href="https://www.linkedin.com/in/steve-s-2a9077230/" class="social-btn linkedin" target="_blank" title="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://github.com/Steveseq" class="social-btn github" target="_blank" title="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Steve Sequeira | All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Mobile menu functionality
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const closeBtn = document.getElementById('closeBtn');
+    const mobileNav = document.getElementById('mobileNav');
+
+    function toggleMobileMenu() {
+      mobileNav.classList.toggle('active');
+    }
+
+    function closeMobileMenu() {
+      mobileNav.classList.remove('active');
+    }
+
+    mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+    closeBtn.addEventListener('click', closeMobileMenu);
+
+    // Close menu when clicking on a link
+    const mobileLinks = document.querySelectorAll('.mobile-nav a');
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', closeMobileMenu);
+    });
+  </script>
+</body>
+</html>
